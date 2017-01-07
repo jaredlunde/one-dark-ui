@@ -32,3 +32,354 @@
 @import "styles/packages.less";
 @import "styles/core.less";
 @import "styles/config.less";
+
+
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed.
+ *
+ * If you are unfamiliar with LESS, you can read more about it here:
+ * http://www.lesscss.org
+ */
+
+atom-workspace, atom-workspace-axis, atom-panel, .tool-panel, .panel-bottom,
+.panel-heading, atom-panel-container, .item-views,
+atom-pane-container atom-pane .item-views .pane-item,
+.settings-view > .panels,
+.settings-view .config-menu {
+  background: darken(#6f6567, 32%);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.settings-view .config-menu {
+  padding-top: 0;
+  border-right: none;
+}
+
+.settings-view > .panels {
+  background: darken(#6f6567, 30%);
+  border-left: 2px solid darken(#6f6567, 28%);
+}
+
+.status-bar {
+  background: darken(#6f6567, 37%);
+  border-top: none;
+}
+
+.tree-view {
+  background: darken(#6f6567, 32%);
+  color: #f4f4f5;
+  .list-group li:not(.list-nested-item).status-modified, .list-tree li:not(.list-nested-item).status-modified, .list-group li.list-nested-item.status-modified > .list-item, .list-tree li.list-nested-item.status-modified > .list-item {
+    color: lighten(#4285f4, 5%);
+    font-weight: 700;
+  }
+
+  .list-tree li.selected {
+    // color: #fff !important;
+    font-style: oblique;
+    font-weight: 700 !important;
+
+    &:before {
+      background: darken(#6f6567, 37%) !important;
+      height: none;
+    }
+  }
+
+  .list-group li:not(.list-nested-item), .list-tree li:not(.list-nested-item), .list-group li.list-nested-item > .list-item, .list-tree li.list-nested-item > .list-item {
+    font-weight: normal;
+    font-size: 14px;
+    color: #dbdbda;
+    font-weight: 400;
+    font-family: "Hack";
+    line-height: 1.8em;
+  }
+
+  .file-icons-tab-pane-icon atom-pane .tab-bar .tab .title[data-path]:before, .icon-file-text:before, .icon-file-binary:before, .theme-flatland-dark-ui .icon-file-text:before, .theme-flatland-dark-ui .icon-book:before {
+    color: #6f6567;
+  }
+  .list-tree li.list-nested-item:not(.status-modified) > .list-item .name {
+    color: #f4f4f5;
+  }
+  .name.icon.icon-repo {
+    font-weight: 600;
+    color: #fff;
+    z-index: 1000000;
+    font-family: "Hack";
+    font-size: 20px;
+    &::before {
+      top: 2px;
+    }
+  }
+  .list-group li:not(.list-nested-item).status-added, .list-tree li:not(.list-nested-item).status-added, .list-group li.list-nested-item.status-added > .list-item, .list-tree li.list-nested-item.status-added > .list-item {
+    color: #2dc483;
+    font-weight: 600;
+  }
+}
+
+.tree-view .project-root.project-root:before {
+  background: none;
+  height: auto;
+  border: none;
+}
+
+.tab-bar {
+  background: darken(#6f6567, 34%);
+  height: 4em;
+  display: flex;
+  align-items: stretch;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 0;
+  border: 2px solid darken(#6f6567, 28%);
+  box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+}
+
+.tab-bar .tab {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  align-content: center;
+  overflow: hidden;
+  background: transparent;
+  font-family: "Hack";
+  font-size: 12px;
+  flex-grow: 1;
+  font-weight: 600;
+  max-width: none;
+  min-width: 161px;
+  background: darken(#6f6567, 34%);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  // box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+}
+
+.tab-bar .tab .title {
+  font-family: "Hack";
+  font-weight: 600;
+  font-size: 12px;
+  border: none !important;
+}
+
+.tab-bar .tab .title .foldername-tabs {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  height: 100%;
+  top: auto;
+}
+
+.tab-bar .tab .close-icon {
+  height: 18px;
+  top: 50%;
+  margin-top: -9px;
+  line-height: auto;
+  border-radius: 100000px;
+  background: #444;
+  color: #888;
+
+  &:before {
+    height: auto;
+  }
+  &:hover {
+    background: #4285f4;
+    color: #fff;
+  }
+}
+
+.tab-bar .tab.active,
+.tab-bar .tab.active[data-type$="Editor"],
+.tab-bar .tab.active[data-type="MarkdownPreviewView"],
+.tab-bar .tab:hover {
+  background: darken(#6f6567, 28%);
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 1.0);
+  .title, &:before {
+    background: transparent;
+  }
+  &:after {
+    border: none;
+    background-image: none;
+    box-shadow: none;
+  }
+}
+
+.tab-bar .tab + .tab {
+  border-left: 0;
+}
+
+.tab-bar .tab .title {
+  display: flex;
+  background: none;
+  -webkit-mask: none;
+  color: #dbdbda;
+  height: 100%;
+  align-items: center;
+}
+
+atom-pane-container atom-pane .item-views {
+  border: 0;
+}
+
+.editor {
+  border: 2px solid darken(#6f6567, 28%);
+  border-top: none;
+  margin-bottom: 6px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 4px 7px rgba(0,0,0,0.25), 0 0 5px rgba(0,0,0,0.22);
+}
+
+.platform-darwin atom-text-editor:not([mini])::shadow .editor-contents--private .gutter-container .gutter[gutter-name=line-number] {
+  border-bottom-left-radius: 10px !important;
+  overflow: hidden;
+}
+
+.editor .cursor {
+
+}
+
+
+atom-panel.bottom {
+  border: none;
+}
+
+
+[theme-one-dark-ui-layoutmode="auto"] atom-pane-container atom-pane {
+  border: none !important;
+}
+
+.btn, .btn.btn-default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: darken(#4285f4, 5%);
+  color: white;
+  border: none !important;
+  background-image: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  font-family: "Hack";
+  line-height: 1;
+
+  &:hover {
+    background: darken(#4285f4, 10%);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.50), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+  &.selected {
+    background: darken(#4285f4, 15%);
+
+    &:hover {
+      background: darken(#4285f4, 10%);
+    }
+  }
+}
+
+
+atom-text-editor[mini],
+atom-text-editor[mini].is-focused {
+  background: fade(#bbb, 80%);
+  padding: 6px 16px;
+  color: #333;
+  font-weight: 400;
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+atom-text-editor[mini]::shadow div.placeholder-text {
+  color: #444;
+}
+
+atom-text-editor[mini].is-focused {
+  background: #bbb;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+}
+
+atom-text-editor[mini].is-focused::shadow .selection .region,
+atom-text-editor[mini]::shadow .selection .region  {
+  background: fade(#1285f4, 30%) !important;
+  border-radius: 3px !important;
+}
+
+.text-subtle {
+  color: #555;
+}
+
+
+.tree-view::before {
+  background: transparent;
+}
+
+
+.settings-view.pane-item {
+  border: 2px solid darken(#6f6567, 28%);
+  border-top: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+.settings-view .config-menu .nav > li.active > a {
+  background: darken(#6f6567, 28%);
+}
+
+.settings-view .config-menu .nav > li:hover > a {
+  background: darken(#6f6567, 28%);
+}
+
+.settings-view select.form-control,
+.settings-view .package-card {
+  background: darken(#6f6567, 37%);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  &:hover {
+    background: darken(#6f6567, 40%);
+  }
+}
+
+.settings-view .sub-section .sub-section-heading,
+.settings-view .section-heading {
+  font-family: "Hack";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.settings-view .icon::before {
+  color: #fff !important;
+}
+
+.settings-view .button-area > .btn {
+  padding: 8px 12px;
+}
+
+.btn {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.btn-group {
+  display: flex;
+  overflow:hidden;
+}
+
+
+.btn-group .btn {
+  align-self: stretch;
+  min-height: 100%;
+}
+
+
+.btn.status-indicator {
+  height: 32px;
+}

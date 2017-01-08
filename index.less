@@ -33,7 +33,6 @@
 @import "styles/core.less";
 @import "styles/config.less";
 
-
 /*
  * Your Stylesheet
  *
@@ -49,10 +48,18 @@ atom-workspace, atom-workspace-axis, atom-panel, .tool-panel, .panel-bottom,
 atom-pane-container atom-pane .item-views .pane-item,
 .settings-view > .panels,
 .settings-view .config-menu {
-  background: darken(#6f6567, 32%);
+  font-family: "Roboto";
+  background: darken(#6f6567, 33%);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.settings-view .config-menu {
+  // border-top: 2px solid darken(#6f6567, 33%);
+  font-family: "Iosevka";
+  font-weight: 700;
+  font-size: 15px;
 }
 
 .settings-view .config-menu {
@@ -66,36 +73,37 @@ atom-pane-container atom-pane .item-views .pane-item,
 }
 
 .status-bar {
-  background: darken(#6f6567, 37%);
+  background: darken(#6f6567, 34%);
   border-top: none;
 }
 
 .tree-view {
-  background: darken(#6f6567, 32%);
+  background: darken(#6f6567, 33%);
   color: #f4f4f5;
+
   .list-group li:not(.list-nested-item).status-modified, .list-tree li:not(.list-nested-item).status-modified, .list-group li.list-nested-item.status-modified > .list-item, .list-tree li.list-nested-item.status-modified > .list-item {
     color: lighten(#4285f4, 5%);
-    font-weight: 700;
+    font-weight: 400;
   }
 
   .list-tree li.selected {
     // color: #fff !important;
     font-style: oblique;
-    font-weight: 700 !important;
+    // font-weight: 700 !important;
 
-    &:before {
-      background: darken(#6f6567, 37%) !important;
-      height: none;
+    &::before {
+      background: darken(#6f6567, 28%) !important;
+      height: 28px;
     }
   }
 
   .list-group li:not(.list-nested-item), .list-tree li:not(.list-nested-item), .list-group li.list-nested-item > .list-item, .list-tree li.list-nested-item > .list-item {
     font-weight: normal;
-    font-size: 14px;
+    font-size: 17px;
     color: #dbdbda;
     font-weight: 400;
-    font-family: "Hack";
-    line-height: 1.8em;
+    font-family: "Iosevka";
+    line-height: 1.7em;
   }
 
   .file-icons-tab-pane-icon atom-pane .tab-bar .tab .title[data-path]:before, .icon-file-text:before, .icon-file-binary:before, .theme-flatland-dark-ui .icon-file-text:before, .theme-flatland-dark-ui .icon-book:before {
@@ -108,14 +116,11 @@ atom-pane-container atom-pane .item-views .pane-item,
     font-weight: 600;
     color: #fff;
     z-index: 1000000;
-    font-family: "Hack";
-    font-size: 20px;
-    &::before {
-      top: 2px;
-    }
+    font-family: "Iosevka";
+    font-size: 24px;
   }
   .list-group li:not(.list-nested-item).status-added, .list-tree li:not(.list-nested-item).status-added, .list-group li.list-nested-item.status-added > .list-item, .list-tree li.list-nested-item.status-added > .list-item {
-    color: #2dc483;
+    color: #1ec483;
     font-weight: 600;
   }
 }
@@ -127,14 +132,15 @@ atom-pane-container atom-pane .item-views .pane-item,
 }
 
 .tab-bar {
-  background: darken(#6f6567, 34%);
+  background: darken(#6f6567, 28%);
   height: 4em;
   display: flex;
   align-items: stretch;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
   margin: 0;
   border: 2px solid darken(#6f6567, 28%);
+  border-bottom: 2px solid darken(#6f6567, 28%);
   box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
 }
 
@@ -145,21 +151,27 @@ atom-pane-container atom-pane .item-views .pane-item,
   align-content: center;
   overflow: hidden;
   background: transparent;
-  font-family: "Hack";
-  font-size: 12px;
+  font-family: "Iosevka";
   flex-grow: 1;
   font-weight: 600;
   max-width: none;
   min-width: 161px;
-  background: darken(#6f6567, 34%);
+  background: darken(#6f6567, 28%);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   // box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+  &:first-child {
+    border-top-left-radius: 24px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 24px;
+  }
 }
 
 .tab-bar .tab .title {
-  font-family: "Hack";
+  font-family: "Iosevka";
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   border: none !important;
 }
 
@@ -172,9 +184,9 @@ atom-pane-container atom-pane .item-views .pane-item,
 }
 
 .tab-bar .tab .close-icon {
-  height: 18px;
-  top: 50%;
-  margin-top: -9px;
+  height: 18px!important;
+  top: 50%!important;
+  margin-top: -9px!important;
   line-height: auto;
   border-radius: 100000px;
   background: #444;
@@ -193,19 +205,28 @@ atom-pane-container atom-pane .item-views .pane-item,
 .tab-bar .tab.active[data-type$="Editor"],
 .tab-bar .tab.active[data-type="MarkdownPreviewView"],
 .tab-bar .tab:hover {
-  background: darken(#6f6567, 28%);
+  background: darken(#6f6567, 23%);
   height: 100%;
   border: 0;
-  border-radius: 0;
   outline: none;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 1.0);
   .title, &:before {
     background: transparent;
+    color: #fff;
   }
   &:after {
     border: none;
     background-image: none;
     box-shadow: none;
+  }
+  &:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  &:first-child {
+    border-top-right-radius: 0;
+  }
+  &:last-child {
+    border-top-left-radius: 0;
   }
 }
 
@@ -217,8 +238,9 @@ atom-pane-container atom-pane .item-views .pane-item,
   display: flex;
   background: none;
   -webkit-mask: none;
-  color: #dbdbda;
+  color: #666;
   height: 100%;
+  text-shadow: none;
   align-items: center;
 }
 
@@ -230,13 +252,13 @@ atom-pane-container atom-pane .item-views {
   border: 2px solid darken(#6f6567, 28%);
   border-top: none;
   margin-bottom: 6px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  box-shadow: 0 4px 7px rgba(0,0,0,0.25), 0 0 5px rgba(0,0,0,0.22);
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  // box-shadow: 0 4px 7px rgba(0,0,0,0.25), 0 0 5px rgba(0,0,0,0.22);
 }
 
 .platform-darwin atom-text-editor:not([mini])::shadow .editor-contents--private .gutter-container .gutter[gutter-name=line-number] {
-  border-bottom-left-radius: 10px !important;
+  border-bottom-left-radius: 24px !important;
   overflow: hidden;
 }
 
@@ -264,12 +286,12 @@ atom-panel.bottom {
   background-image: none;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  font-family: "Hack";
+  font-family: "Iosevka";
   line-height: 1;
 
   &:hover {
     background: darken(#4285f4, 10%);
-    box-shadow: 0 14px 28px rgba(0,0,0,0.50), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.50), 0 6px 6px rgba(0,0,0,0.22);
   }
 
   &.selected {
@@ -284,7 +306,7 @@ atom-panel.bottom {
 
 atom-text-editor[mini],
 atom-text-editor[mini].is-focused {
-  background: fade(#bbb, 80%);
+  background: fade(#bbb, 70%);
   padding: 6px 16px;
   color: #333;
   font-weight: 400;
@@ -292,6 +314,7 @@ atom-text-editor[mini].is-focused {
   border: 1px solid rgba(0, 0, 0, 0.12) !important;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  border-radius: 10000px!important;
 }
 
 atom-text-editor[mini]::shadow div.placeholder-text {
@@ -311,7 +334,7 @@ atom-text-editor[mini]::shadow .selection .region  {
 }
 
 .text-subtle {
-  color: #555;
+  color: #444;
 }
 
 
@@ -319,21 +342,20 @@ atom-text-editor[mini]::shadow .selection .region  {
   background: transparent;
 }
 
-
 .settings-view.pane-item {
   border: 2px solid darken(#6f6567, 28%);
   border-top: 0;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
 }
 
 
 .settings-view .config-menu .nav > li.active > a {
-  background: darken(#6f6567, 28%);
+  background: darken(#6f6567, 30%);
 }
 
 .settings-view .config-menu .nav > li:hover > a {
-  background: darken(#6f6567, 28%);
+  background: darken(#6f6567, 30%);
 }
 
 .settings-view select.form-control,
@@ -348,7 +370,7 @@ atom-text-editor[mini]::shadow .selection .region  {
 
 .settings-view .sub-section .sub-section-heading,
 .settings-view .section-heading {
-  font-family: "Hack";
+  font-family: "Iosevka";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -366,11 +388,22 @@ atom-text-editor[mini]::shadow .selection .region  {
 .btn {
   padding-top: 8px;
   padding-bottom: 8px;
+  border-radius: 10000px;
+  line-height: 1.0;
 }
 
 .btn-group {
   display: flex;
   overflow:hidden;
+  .btn:first-child {
+    border-top-left-radius: 10000px;
+    border-bottom-left-radius: 10000px;
+  }
+
+  .btn:last-child {
+    border-top-right-radius: 10000px;
+    border-bottom-right-radius: 10000px;
+  }
 }
 
 
@@ -382,4 +415,26 @@ atom-text-editor[mini]::shadow .selection .region  {
 
 .btn.status-indicator {
   height: 32px;
+}
+
+
+.panel-heading {
+  display: flex !important;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  & > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 33%;
+  }
+
+  .text-info {
+    flex-basis: 100%;
+  }
+
+  .pull-right {
+    flex-basis: 33%;
+    text-align: right;
+  }
 }
